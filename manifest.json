@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "Intentional Instagram",
+  "version": "1.0.0",
+  "description": "Turns Instagram into a messaging app and profile directory, not a feed.",
+  "permissions": [
+    "webRequest",
+    "webRequestBlocking"
+  ],
+  "host_permissions": [
+    "https://www.instagram.com/*"
+  ],
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.instagram.com/*"],
+      "js": ["content.js"],
+      "css": ["styles.css"],
+      "run_at": "document_start"
+    }
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "intentional-instagram@example.com",
+      "strict_min_version": "109.0"
+    }
+  }
+}

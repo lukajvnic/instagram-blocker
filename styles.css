@@ -1,0 +1,231 @@
+/*
+ * Broad, defensive CSS cleanup for Intentional Instagram.
+ *
+ * JavaScript does the careful URL-aware and text-aware cleanup. CSS provides a
+ * fast first pass so distracting surfaces are hidden as soon as possible.
+ */
+
+/* Anything hidden by content.js stays hidden even if Instagram mutates styles. */
+[data-ii-hidden="true"] {
+  display: none !important;
+}
+
+/* Extension-owned fallback when Instagram does not show a Search button.
+   It uses Instagram's own web search endpoint and shows account results only. */
+#intentional-instagram-search-button {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  box-sizing: border-box !important;
+  border: 0 !important;
+  border-radius: 10px !important;
+  background: transparent !important;
+  color: inherit !important;
+  font: 600 15px/1.2 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+  cursor: pointer !important;
+}
+
+#intentional-instagram-search-button[data-ii-placement="sidebar"] {
+  position: static !important;
+  width: calc(100% - 24px) !important;
+  min-height: 48px !important;
+  margin: 4px 12px !important;
+  padding: 12px !important;
+  justify-content: flex-start !important;
+  box-shadow: none !important;
+  z-index: auto !important;
+}
+
+#intentional-instagram-search-button[data-ii-placement="floating"] {
+  position: fixed !important;
+  left: 16px !important;
+  bottom: 16px !important;
+  z-index: 2147483646 !important;
+  padding: 9px 12px !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  border-radius: 999px !important;
+  background: #111 !important;
+  color: #fff !important;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25) !important;
+}
+
+#intentional-instagram-search-button:hover,
+#intentional-instagram-search-button:focus {
+  background: rgba(255, 255, 255, 0.1) !important;
+  outline: none !important;
+}
+
+#intentional-instagram-search-button[data-ii-placement="floating"]:hover,
+#intentional-instagram-search-button[data-ii-placement="floating"]:focus {
+  background: #222 !important;
+  outline: 2px solid rgba(255, 255, 255, 0.4) !important;
+}
+
+#intentional-instagram-search-overlay[hidden] {
+  display: none !important;
+}
+
+#intentional-instagram-search-overlay {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 2147483647 !important;
+  display: grid !important;
+  place-items: start center !important;
+  padding-top: 8vh !important;
+  background: rgba(0, 0, 0, 0.45) !important;
+  color: #fff !important;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+}
+
+.intentional-instagram-search-panel {
+  width: min(520px, calc(100vw - 32px)) !important;
+  max-height: 78vh !important;
+  overflow: hidden !important;
+  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+  border-radius: 16px !important;
+  background: #111 !important;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45) !important;
+}
+
+.intentional-instagram-search-header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 14px 16px !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+}
+
+.intentional-instagram-search-header button {
+  border: 0 !important;
+  background: transparent !important;
+  color: #fff !important;
+  font-size: 26px !important;
+  line-height: 1 !important;
+  cursor: pointer !important;
+}
+
+#intentional-instagram-search-input {
+  box-sizing: border-box !important;
+  display: block !important;
+  width: calc(100% - 32px) !important;
+  margin: 16px !important;
+  padding: 12px 14px !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  border-radius: 12px !important;
+  background: #222 !important;
+  color: #fff !important;
+  font: 500 15px/1.3 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+}
+
+.intentional-instagram-search-help {
+  margin: -6px 16px 12px !important;
+  color: rgba(255, 255, 255, 0.7) !important;
+  font-size: 12px !important;
+}
+
+#intentional-instagram-search-results {
+  max-height: 48vh !important;
+  overflow: auto !important;
+  padding: 0 8px 8px !important;
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.intentional-instagram-search-result {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  width: 100% !important;
+  padding: 10px 8px !important;
+  border: 0 !important;
+  border-radius: 12px !important;
+  background: transparent !important;
+  color: #fff !important;
+  text-align: left !important;
+  cursor: pointer !important;
+}
+
+.intentional-instagram-search-result:hover,
+.intentional-instagram-search-result:focus {
+  background: rgba(255, 255, 255, 0.1) !important;
+  outline: none !important;
+}
+
+.intentional-instagram-search-result img,
+.intentional-instagram-avatar-fallback {
+  width: 44px !important;
+  height: 44px !important;
+  flex: 0 0 auto !important;
+  border-radius: 50% !important;
+}
+
+.intentional-instagram-search-result img {
+  object-fit: cover !important;
+}
+
+.intentional-instagram-avatar-fallback {
+  display: grid !important;
+  place-items: center !important;
+  background: rgba(255, 255, 255, 0.14) !important;
+  color: #fff !important;
+  font-weight: 700 !important;
+}
+
+.intentional-instagram-search-result-text {
+  display: grid !important;
+  gap: 2px !important;
+}
+
+.intentional-instagram-search-result-text span {
+  color: rgba(255, 255, 255, 0.65) !important;
+  font-size: 13px !important;
+}
+
+/* Hide obvious entry points into passive browsing. Search and Direct remain. */
+a[href="/"],
+a[href="/explore/"],
+a[href^="/explore/people/"],
+a[href^="/reels/"] {
+  display: none !important;
+}
+
+/* Icon-only fallbacks. content.js hides the containing link/button when found. */
+[aria-label="Home"],
+[aria-label="Explore"],
+[aria-label="Reels"],
+[aria-label="Notifications"] {
+  display: none !important;
+}
+
+/* The passive surfaces are redirected away from; hide them during the transition. */
+html[data-ii-page="home"] main,
+html[data-ii-page="explore"] main,
+html[data-ii-page="reels"] main,
+body[data-ii-page="home"] main,
+body[data-ii-page="explore"] main,
+body[data-ii-page="reels"] main {
+  visibility: hidden !important;
+}
+
+/* Feed shells/trays on the home page, including the stories tray. */
+html[data-ii-page="home"] main article,
+html[data-ii-page="home"] main section,
+html[data-ii-page="home"] main [role="feed"],
+body[data-ii-page="home"] main article,
+body[data-ii-page="home"] main section,
+body[data-ii-page="home"] main [role="feed"] {
+  display: none !important;
+}
+
+/* Recommendation sidebars commonly shown next to posts or miscellaneous pages.
+   Do not apply this on Direct or profile pages. */
+html:not([data-ii-page="direct"]):not([data-ii-page="profile"]) main aside,
+body:not([data-ii-page="direct"]):not([data-ii-page="profile"]) main aside {
+  display: none !important;
+}
+
+/* Common feed/recommendation roles. Scoped away from Direct/Profile to avoid
+   breaking intentional messaging or profile lookup. */
+html:not([data-ii-page="direct"]):not([data-ii-page="profile"]) [role="feed"],
+body:not([data-ii-page="direct"]):not([data-ii-page="profile"]) [role="feed"] {
+  display: none !important;
+}
