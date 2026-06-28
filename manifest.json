@@ -4,14 +4,19 @@
   "version": "1.0.0",
   "description": "Turns Instagram into a messaging app and profile directory, not a feed.",
   "permissions": [
-    "webRequest",
-    "webRequestBlocking"
+    "declarativeNetRequest"
   ],
   "host_permissions": [
     "https://www.instagram.com/*"
   ],
-  "background": {
-    "scripts": ["background.js"]
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "instagram_redirects",
+        "enabled": true,
+        "path": "rules.json"
+      }
+    ]
   },
   "content_scripts": [
     {
@@ -20,11 +25,5 @@
       "css": ["styles.css"],
       "run_at": "document_start"
     }
-  ],
-  "browser_specific_settings": {
-    "gecko": {
-      "id": "intentional-instagram@example.com",
-      "strict_min_version": "109.0"
-    }
-  }
+  ]
 }

@@ -2,7 +2,7 @@
 
 **Instagram is a messaging app and profile directory, not a feed.**
 
-Intentional Instagram is a minimal Firefox Manifest V3 WebExtension that makes Instagram useful for:
+Intentional Instagram is a minimal Chrome Manifest V3 extension that makes Instagram useful for:
 
 1. Direct messages
 2. Intentional profile lookup
@@ -46,29 +46,27 @@ There are no external dependencies.
 
 ## Files
 
-- `manifest.json` — Firefox Manifest V3 extension definition
-- `background.js` — redirects plain Instagram home URLs before the feed loads
+- `manifest.json` — Chrome Manifest V3 extension definition
+- `rules.json` — Declarative Net Request rule that redirects plain Instagram home URLs before the feed loads
 - `content.js` — DOM cleanup, SPA navigation hooks, MutationObserver
 - `styles.css` — fast CSS-based hiding of broad distracting surfaces
 - `README.md` — this file
 
-## Install in Firefox temporarily
+## Install in Chrome temporarily
 
-1. Open Firefox.
-2. Go to `about:debugging`.
-3. Click **This Firefox**.
-4. Click **Load Temporary Add-on…**.
-5. Select this extension’s `manifest.json` file.
+1. Open Chrome.
+2. Go to `chrome://extensions`.
+3. Enable **Developer mode**.
+4. Click **Load unpacked**.
+5. Select this extension folder.
 6. Visit `https://www.instagram.com/`.
-
-Firefox temporary add-ons are removed when Firefox restarts. For long-term personal use, package/sign the extension through Mozilla’s normal add-on workflow or reload it after restarting.
 
 ## Permissions
 
 The extension requests:
 
 - `https://www.instagram.com/*` host access only
-- `webRequest` / `webRequestBlocking` so Firefox can redirect the plain home page to DMs before the feed loads
+- `declarativeNetRequest` so Chrome can redirect the plain home page to DMs before the feed loads
 
 ## Customization
 
