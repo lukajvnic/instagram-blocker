@@ -1,6 +1,6 @@
 # Intentional Instagram
 
-**Instagram is a messaging app and profile directory, not a feed.**
+**Instagram and LinkedIn are messaging apps and profile directories, not feeds.**
 
 Intentional Instagram is a minimal Chrome Manifest V3 extension that makes Instagram useful for:
 
@@ -25,6 +25,15 @@ It tries to remove or redirect away from feed, Explore, Reels, suggested account
 - Hides obvious links/buttons for Home, Explore, Reels, and Notifications.
 - Re-applies cleanup after Instagram client-side navigation and DOM changes.
 
+### LinkedIn
+
+- Redirects `https://www.linkedin.com/` and `https://www.linkedin.com/feed/` to:
+  `https://www.linkedin.com/messaging/`
+- Blanks the page during the redirect so no feed posts flash on screen.
+- Hides the **Home** nav item and any other link pointing back at the feed.
+- Intercepts clicks on feed links (including the LinkedIn logo) and sends them to Messaging.
+- Leaves messaging, notifications, jobs, search, profiles, and `/feed/update/...` post permalinks alone.
+
 ## What it blocks or hides
 
 - Home feed
@@ -35,6 +44,7 @@ It tries to remove or redirect away from feed, Explore, Reels, suggested account
 - “People you may know” modules
 - Recommendation sidebars
 - Notification prompts/popups where detectable
+- LinkedIn's infinite-scrolling home feed
 
 ## Privacy
 
@@ -47,9 +57,11 @@ There are no external dependencies.
 ## Files
 
 - `manifest.json` — Chrome Manifest V3 extension definition
-- `rules.json` — Declarative Net Request rule that redirects plain Instagram home URLs before the feed loads
-- `content.js` — DOM cleanup, SPA navigation hooks, MutationObserver
-- `styles.css` — fast CSS-based hiding of broad distracting surfaces
+- `rules.json` — Declarative Net Request rules that redirect Instagram home and LinkedIn home/feed URLs before the feed loads
+- `content.js` — Instagram DOM cleanup, SPA navigation hooks, MutationObserver
+- `styles.css` — fast CSS-based hiding of broad distracting Instagram surfaces
+- `linkedin.js` — LinkedIn feed redirect, feed-link hiding, click guard
+- `linkedin.css` — blanks the LinkedIn feed page during redirect
 - `README.md` — this file
 
 ## Install in Chrome temporarily
@@ -59,14 +71,14 @@ There are no external dependencies.
 3. Enable **Developer mode**.
 4. Click **Load unpacked**.
 5. Select this extension folder.
-6. Visit `https://www.instagram.com/`.
+6. Visit `https://www.instagram.com/` or `https://www.linkedin.com/`.
 
 ## Permissions
 
 The extension requests:
 
-- `https://www.instagram.com/*` host access only
-- `declarativeNetRequest` so Chrome can redirect the plain home page to DMs before the feed loads
+- `https://www.instagram.com/*` and `https://www.linkedin.com/*` host access only
+- `declarativeNetRequest` so Chrome can redirect the plain home pages to DMs / Messaging before the feed loads
 
 ## Customization
 
@@ -75,6 +87,7 @@ Instagram changes its markup often. The easiest places to adjust behavior are:
 - `DISTRACTING_TEXT_PATTERNS` in `content.js`
 - `DISTRACTING_CONTROL_SELECTORS` in `content.js`
 - broad CSS selectors in `styles.css`
+- `MESSAGING_URL` in `linkedin.js` and `rules.json`, if you would rather land on `/mynetwork/` or `/jobs/` than LinkedIn Messaging
 
 The extension is intentionally conservative: it should let you open DMs, search an account, click a profile, view that profile’s posts/stories, and leave.
 

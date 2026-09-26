@@ -12,5 +12,33 @@
       "regexFilter": "^https://www\\.instagram\\.com/([?#].*)?$",
       "resourceTypes": ["main_frame"]
     }
+  },
+  {
+    "id": 2,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "url": "https://www.linkedin.com/messaging/"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://www\\.linkedin\\.com/([?#].*)?$",
+      "resourceTypes": ["main_frame"]
+    }
+  },
+  {
+    "id": 3,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "url": "https://www.linkedin.com/messaging/"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://www\\.linkedin\\.com/feed/?([?#].*)?$",
+      "resourceTypes": ["main_frame"]
+    }
   }
 ]

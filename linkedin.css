@@ -1,0 +1,16 @@
+/* Minimal styles for Intentional LinkedIn. */
+
+[data-ii-hidden="true"] {
+  display: none !important;
+}
+
+/* Blank the page while the feed redirect is in flight, so no posts flash. */
+html[data-ii-blocked="true"] body {
+  display: none !important;
+}
+
+/* Hide the feed container itself in case a redirect is ever outrun. */
+html[data-ii-blocked="true"] .scaffold-finite-scroll,
+html[data-ii-blocked="true"] #main-feed-tab-content {
+  display: none !important;
+}

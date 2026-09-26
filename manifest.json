@@ -1,13 +1,14 @@
 {
   "manifest_version": 3,
   "name": "Intentional Instagram",
-  "version": "1.0.0",
-  "description": "Turns Instagram into a messaging app and profile directory, not a feed.",
+  "version": "1.1.0",
+  "description": "Turns Instagram and LinkedIn into messaging apps and profile directories, not feeds.",
   "permissions": [
     "declarativeNetRequest"
   ],
   "host_permissions": [
-    "https://www.instagram.com/*"
+    "https://www.instagram.com/*",
+    "https://www.linkedin.com/*"
   ],
   "declarative_net_request": {
     "rule_resources": [
@@ -23,6 +24,12 @@
       "matches": ["https://www.instagram.com/*"],
       "js": ["content.js"],
       "css": ["styles.css"],
+      "run_at": "document_start"
+    },
+    {
+      "matches": ["https://www.linkedin.com/*"],
+      "js": ["linkedin.js"],
+      "css": ["linkedin.css"],
       "run_at": "document_start"
     }
   ]
